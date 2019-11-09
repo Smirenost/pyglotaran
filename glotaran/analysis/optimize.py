@@ -21,14 +21,17 @@ ResultFuture = \
     collections.namedtuple('ResultFuture', 'bag clp_label matrix full_clp_label clp residual')
 
 
-def optimize(scheme, verbose=True, client=None):
+def optimize(scheme, verbose=True, client=None, debug=False):
 
+    initial_parameter = scheme.parameter.as_parameter_dict()
+    if debug:
+        return optimize_task(initial_parameter, scheme, verbose)
     if client is None:
         try:
             client = dd.get_client()
         except Exception:
             client = dd.Client(processes=False)
-    initial_parameter = scheme.parameter.as_parameter_dict()
+
     scheme = client.scatter(scheme)
     optimization_result_future = client.submit(optimize_task, initial_parameter, scheme, verbose)
     return optimization_result_future.result()

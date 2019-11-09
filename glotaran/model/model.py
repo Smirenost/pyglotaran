@@ -158,6 +158,7 @@ class Model:
                  max_nfev: int = None,
                  group_tolerance: int = 0,
                  client=None,
+                 debug=False,
                  ) -> Result:
         """Optimizes the parameter for this model.
 
@@ -178,7 +179,7 @@ class Model:
         """
         scheme = Scheme(model=self, parameter=parameter, data=data,
                         nnls=nnls, group_tolerance=group_tolerance, nfev=max_nfev)
-        result = optimize(scheme, verbose=verbose, client=client)
+        result = optimize(scheme, verbose=verbose, client=client, debug=debug)
         return result
 
     def result_from_parameter(self,
