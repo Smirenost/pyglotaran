@@ -1,3 +1,10 @@
+# This project was renamed to pyglotaran on pypi 
+This is the last release of the glotaran packge under this name, and won't be updated further. 
+This release corresponds to the [pyglotaran](https://pypi.org/project/pyglotaran/) release version 0.1.0
+Go to [pyglotaran](https://pypi.org/project/pyglotaran/) to get instruction on how to install the latest version
+
+Old readme kept for posterity (expect broken links): 
+
 # pyGloTarAn
 
 pyGloTarAn is a python library for global and target analysis
